@@ -37,15 +37,25 @@
 ##接口
 ```c++
 
-enum IDType {
+tyepdef uint64_t ID_t;
+
+enum UserCertType {
 	IDCard,
 	UndefinedType
+};
+
+enum UserStatus{
+	Null,
+	LoggedIn,
+	NotLoggedIn,
+	Applied,
+	InvalidInfomation
 };
 
 enum Status {
 	OperationSuccessful,
 	CardIDInvalid,
-	UsrNotFound,
+	userNotFound,
 	PasswordNotMatch,
 	CashAmountInvalid,
 	BalanceNotEnough,
@@ -53,79 +63,55 @@ enum Status {
 	TransferAmountRestricted,
 	TransferTimesRestricted,
 	TargetCardIDInvalid,
-	TargetCardAndUsrNotMatch,
+	TargetCardAnduserNotMatch,
 	ReapplyTimeOut,
-	UsrIDInvalid,
-	UsrNotLogIn,
+	userIDInvalid,
+	userNotLogIn,
 	NoAvaliableNetworkConnection,
 	UndefinedError
 };
 
-class card {
-	private:
-		uint64_t cardID;
+class Card {
 	public:
+		Card(ID_t cardID);
 
-	//	card(void);
-		card(uint64_t cardID);
+		//基本操作
+		Status save(QString password, double amount);
+		Status withdraw(QString password, double amount);
+		Status transfer(QString password, ID_t targetID, QString targetUserName, double amouont);
+		Status updatePassword(QString newPassword, ID_t ID, IDType type = IDCard);
 
-		Status save(QString pwd, float amount);
+		//挂失相关
+		Status activate(QString password);
+		Status loss(ID_t cardID);
 
-		Status withdraw(QString pwd, float amount);
-
-		Status transfer(QString pwd, uint64_t targetID, QString targetUsrName, float amouont);
-
-		Status updatePwd(QString newPwd, uint64_t ID, IDType type = IDCard);
-
-	//	Status apply(const account usr, bool Reapply = false);
-	//	Status apply(const account usr, uint64_t preCardID);
-
-		/*挂失相关*/
-		Status activate(QString pwd);
-		Status loss(uint64_t cardID);
-
-		float query(QString pwd);
-		uint64_t query(void);
-		Status fresh(void);
+		//查询相关
+		Status query(QString password, double& ret);
+		ID_t getCardID();
+		Status refresh();
 };
 
 
-class account{
-	private:
-		int uid;
-		uint64_t ID;
-		IDType type;
-		QString name;
-		usrStatus stat;
-		int cardsCount;
-		card currentCards[MAX_CARDS_HELD_PER_ACCOUNT];
+class Account{
 	public:
-		enum usrStatus{
-			Null,
-			LoggedIn,
-			NotLoggedIn,
-			Applied,
-			InvalidInfomation
-		};
-
-		account(void);
+		Account();
   
-		Status register(QString usrname, uint64_t usrID, IDType usrIDtype, QString phone, QString address);
-		Status login(QString pwd, int uid);
-		Status login(QString pwd, uint64_t usrID, IDType usrIDtype = IDCard);
-  
-		/*申请新卡*/
-		Status apply(bool Reapply = false);
-		Status apply(uint64_t preCardID);
+		Status register(QString username, ID_t userCert, UserCertType userCert, QString phone, QString address);
+		//这两个留一个，我觉得去掉前面一个比较好
+		//Status login(QString password, ID_t uid);
+		Status login(QString password, ID_t userCert, UserCertType userCert = IDCard);
 
-		Status updatePwd(QString newPwd, uint64_t usrID, IDType usrIDtype = IDCard);
+		Status applyNewCard();
+		Status reApply(ID_t preCardID);
 
-		int getuid(void);
-		uint64_t getID(void);
-		IDType gettype(void);
-		usrStatus getstatus(void);
-		int getcardscount(void);
-		card& getcard(int i);
+		Status updatePassword(QString newPassword, ID_t userCert, UserCertType userCert = IDCard);
+
+		ID_t getuid();
+		ID_t getID();
+		IDType getType();
+		UserStatus getStatus();
+		ID_t getCardsCount();
+		Card& getCard(ID_t index);
 };
 
 ```
