@@ -16,3 +16,117 @@
 > card[i][3]~card[i][N+2]存放第i张卡的当日存取款金额，正值代表存款，负值代表取款。
 
 > 当持卡者输入正确的卡号、存款或取款金额后，程序进行相应的处理；若输入了不正确的数据，程序会提示持卡者重新输入；若输入的卡号为负数时，银行终止当日业务。并将当天每张卡的银行业务存到文件中。
+
+##业务
+> 1. 开设账户
+2. 申请新卡
+3. 挂失
+4. 存款
+5. 取款
+6. 转帐
+
+##流程
+> 1. 开户：用户填写纸质申请表，出示身份证原件及相关材料，柜台录入信息并核实填写是否准确，之后后台验证其申请的有效性，有效则用户设置密码，生成个人帐户。
+2. 办卡：用户填写纸质申请表，出示有效身份证明（身份证），柜台根据证件号、姓名确定个人帐户，若无个人账户则goto: 1.，写入数据库的申请的表，n个工作日后发卡，用户去柜台激活，这时数据库正式卡中写入该卡，申请表中删掉卡。激活时确定密码。
+3. 挂失：网上挂失需密码卡号身份证号，忘了就人工：出示身份证件，卡号（忘了就先查个人帐户吧），核实无误，冻结该卡的取款服务。如果补办新卡，走2.，最后把原卡上的钱转到新的卡上；若还想用旧卡号的话也是2.的程序（注意补办需挂失15天以内）；如果不补办，卡找着了本人来柜台激活，估计找不着的可以把钱转到个人账户的其他卡上。
+4. 存款：现金+卡号+密码，数据库里加。
+5. 取款：卡号+密码，数据库里减。
+6. 转帐：自己（卡号+密码）+对方（卡号+姓名），数据库操作，手续费。
+7. 修改密码：网上的需原密码，柜台需身份证件，数据库操作。
+
+##接口
+```c++
+
+enum IDType {
+	IDCard,
+	UndefinedType
+};
+
+enum Status {
+	OperationSuccessful,
+	CardIDInvalid,
+	UsrNotFound,
+	PasswordNotMatch,
+	CashAmountInvalid,
+	BalanceNotEnough,
+	CardFrozen,
+	TransferAmountRestricted,
+	TransferTimesRestricted,
+	TargetCardIDInvalid,
+	TargetCardAndUsrNotMatch,
+	ReapplyTimeOut,
+	UsrIDInvalid,
+	UsrNotLogIn,
+	NoAvaliableNetworkConnection,
+	UndefinedError
+};
+
+class card {
+	private:
+		uint64_t cardID;
+	public:
+
+	//	card(void);
+		card(uint64_t cardID);
+
+		Status save(QString pwd, float amount);
+
+		Status withdraw(QString pwd, float amount);
+
+		Status transfer(QString pwd, uint64_t targetID, QString targetUsrName, float amouont);
+
+		Status updatePwd(QString newPwd, uint64_t ID, IDType type = IDCard);
+
+	//	Status apply(const account usr, bool Reapply = false);
+	//	Status apply(const account usr, uint64_t preCardID);
+
+		/*挂失相关*/
+		Status activate(QString pwd);
+		Status loss(uint64_t cardID);
+
+		float query(QString pwd);
+		uint64_t query(void);
+		Status fresh(void);
+};
+
+
+class account{
+	private:
+		int uid;
+		uint64_t ID;
+		IDType type;
+		QString name;
+		usrStatus stat;
+		int cardsCount;
+		card currentCards[MAX_CARDS_HELD_PER_ACCOUNT];
+	public:
+		enum usrStatus{
+			Null,
+			LoggedIn,
+			NotLoggedIn,
+			Applied,
+			InvalidInfomation
+		};
+
+		account(void);
+  
+		Status register(QString usrname, uint64_t usrID, IDType usrIDtype, QString phone, QString address);
+		Status login(QString pwd, int uid);
+		Status login(QString pwd, uint64_t usrID, IDType usrIDtype = IDCard);
+  
+		/*申请新卡*/
+		Status apply(bool Reapply = false);
+		Status apply(uint64_t preCardID);
+
+		Status updatePwd(QString newPwd, uint64_t usrID, IDType usrIDtype = IDCard);
+
+		int getuid(void);
+		uint64_t getID(void);
+		IDType gettype(void);
+		usrStatus getstatus(void);
+		int getcardscount(void);
+		card& getcard(int i);
+};
+
+```
+
