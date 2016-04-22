@@ -55,7 +55,7 @@ enum UserStatus{
 enum Status {
 	OperationSuccessful,
 	CardIDInvalid,
-	userNotFound,
+	UserNotFound,
 	PasswordNotMatch,
 	CashAmountInvalid,
 	BalanceNotEnough,
@@ -65,8 +65,8 @@ enum Status {
 	TargetCardIDInvalid,
 	TargetCardAnduserNotMatch,
 	ReapplyTimeOut,
-	userIDInvalid,
-	userNotLogIn,
+	UserIDInvalid,
+	UserNotLogIn,
 	NoAvaliableNetworkConnection,
 	UndefinedError
 };
