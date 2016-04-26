@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,16 +10,149 @@
     <height>300</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout"/>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>账户</string>
+    </property>
+    <addaction name="UserLoginOrLogout"/>
+    <addaction name="UserRegister"/>
+    <addaction name="separator"/>
+    <addaction name="UserChangePassword"/>
+    <addaction name="UserApply"/>
+    <addaction name="UserReapply"/>
+    <addaction name="separator"/>
+    <addaction name="UserViewStatus"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>银行卡</string>
+    </property>
+    <addaction name="CardInit"/>
+    <addaction name="separator"/>
+    <addaction name="CardSave"/>
+    <addaction name="CardWithdraw"/>
+    <addaction name="CardTransfer"/>
+    <addaction name="CardChangePassword"/>
+    <addaction name="separator"/>
+    <addaction name="CardActivateOrFreeze"/>
+    <addaction name="separator"/>
+    <addaction name="CardQuery"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <action name="UserLoginOrLogout">
+   <property name="text">
+    <string>登录/注销</string>
+   </property>
+   <property name="toolTip">
+    <string>登录/注销</string>
+   </property>
+  </action>
+  <action name="UserRegister">
+   <property name="text">
+    <string>注册</string>
+   </property>
+  </action>
+  <action name="UserApply">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>申请新卡</string>
+   </property>
+  </action>
+  <action name="UserReapply">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>补办</string>
+   </property>
+  </action>
+  <action name="UserViewStatus">
+   <property name="text">
+    <string>查看状态</string>
+   </property>
+  </action>
+  <action name="CardSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>存款</string>
+   </property>
+  </action>
+  <action name="CardWithdraw">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>取款</string>
+   </property>
+  </action>
+  <action name="CardTransfer">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>转帐</string>
+   </property>
+  </action>
+  <action name="CardChangePassword">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>修改密码</string>
+   </property>
+  </action>
+  <action name="CardInit">
+   <property name="text">
+    <string>选择银行卡</string>
+   </property>
+  </action>
+  <action name="CardActivateOrFreeze">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>激活/冻结</string>
+   </property>
+  </action>
+  <action name="CardQuery">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>查询余额</string>
+   </property>
+  </action>
+  <action name="UserChangePassword">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>修改密码</string>
+   </property>
+  </action>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>
