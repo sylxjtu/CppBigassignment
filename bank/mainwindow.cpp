@@ -5,7 +5,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    user(NULL)
 {
     ui->setupUi(this);
 }
@@ -17,6 +18,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_UserLoginOrLogout_triggered()
 {
-    UserLogin* UserLoginWidget = new UserLogin(this);
-    setCentralWidget(UserLoginWidget);
+    if(!user){
+        UserLogin* UserLoginWidget = new UserLogin(this);
+        setCentralWidget(UserLoginWidget);
+    }
 }

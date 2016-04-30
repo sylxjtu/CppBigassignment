@@ -30,7 +30,22 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="CertTypeInput"/>
+      <widget class="QComboBox" name="CertTypeInput">
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <property name="currentText">
+        <string>身份证</string>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>身份证</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="CertLabel">

@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    Account* user;
 
 private slots:
     void on_UserLoginOrLogout_triggered();
