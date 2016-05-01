@@ -37,7 +37,9 @@
 ##接口
 ```c++
 
-tyepdef uint64_t ID_t;
+#include <QtCore>
+
+typedef QString ID_t;
 
 enum UserCertType {
 	IDCard,
@@ -76,17 +78,17 @@ class Card {
 		Card(ID_t cardID);
 
 		//基本操作
-		Status save(QString password, double amount);
-		Status withdraw(QString password, double amount);
-		Status transfer(QString password, ID_t targetID, QString targetUserName, double amouont);
-		Status updatePassword(QString newPassword, ID_t ID, IDType type = IDCard);
+		Status save(const QString& password, double amount);
+		Status withdraw(const QString& password, double amount);
+		Status transfer(const QString& password, const ID_t& targetID, const QString& targetUserName, double amouont);
+		Status updatePassword(const QString& newPassword, const ID_t& ID, IDType type = IDCard);
 
 		//挂失相关
-		Status activate(QString password);
-		Status loss(ID_t cardID);
+		Status activate(const QString& password);
+		Status loss(const ID_t& cardID);
 
 		//查询相关
-		Status query(QString password, double& ret);
+		Status query(const QString& password, double& ret);
 		ID_t getCardID();
 		Status refresh();
 };
@@ -96,22 +98,22 @@ class Account{
 	public:
 		Account();
   
-		Status register(QString username, ID_t userCert, UserCertType userCert, QString phone, QString address);
+		Status register(const QString& username, const ID_t& userCert, UserCertType userCert, const QString& phone, const QString& address);
 		//这两个留一个，我觉得去掉前面一个比较好
-		//Status login(QString password, ID_t uid);
-		Status login(QString password, ID_t userCert, UserCertType userCert = IDCard);
+		//Status login(QString password, const ID_t& uid);
+		Status login(const QString& password, const ID_t& userCert, UserCertType userCert = IDCard);
 
 		Status applyNewCard();
-		Status reApply(ID_t preCardID);
+		Status reApply(const ID_t& preCardID);
 
-		Status updatePassword(QString newPassword, ID_t userCert, UserCertType userCert = IDCard);
+		Status updatePassword(const QString& newPassword, const ID_t& userCert, UserCertType userCert = IDCard);
 
 		ID_t getuid();
 		ID_t getID();
 		IDType getType();
 		UserStatus getStatus();
 		ID_t getCardsCount();
-		Card& getCard(ID_t index);
+		Card& getCard(const ID_t& index);
 };
 
 ```
