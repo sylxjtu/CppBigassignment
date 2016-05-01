@@ -4,6 +4,8 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 
+#include "account.h"
+
 UserLogin::UserLogin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::UserLogin)
@@ -19,9 +21,9 @@ UserLogin::~UserLogin()
 void UserLogin::on_pushButton_clicked()
 {
     Account* r = new Account;
-    Status s = r.login(ui->PasswordInput->text(), ui->CertInput->text(), ui->CertTypeInput->currentIndex());
+    Status s = r->login(ui->PasswordInput->text(), ui->CertInput->text(), (UserCertType)ui->CertTypeInput->currentIndex());
     if(s == 0){
-        Ui::MainWindow*(parentWidget())->user = r;
+        ((MainWindow*)parentWidget())->user = r;
     }
     else{
         QMessageBox msgBox;
