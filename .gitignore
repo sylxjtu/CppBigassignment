@@ -46,4 +46,8 @@ Temporary Items
 *.user
 
 # Qt Builds
+<<<<<<< HEAD
 build*/
+=======
+build*/
+>>>>>>> origin/UI
