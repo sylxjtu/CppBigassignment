@@ -2,40 +2,118 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>323</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>银行管理系统</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="minimumSize">
+    <size>
+     <width>400</width>
+     <height>300</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>400</width>
+     <height>300</height>
+    </size>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <family>微软雅黑</family>
-        <pointsize>18</pointsize>
-       </font>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="formAlignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="cardIDLabel">
+        <property name="text">
+         <string>卡号</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="cardIDLineEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="passwordLabel">
+        <property name="text">
+         <string>密码</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="passwordLineEdit">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="operationLabel">
+        <property name="text">
+         <string>操作</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="operationComboBox">
+        <item>
+         <property name="text">
+          <string>存款</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>取款</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>查询余额</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="amountLabel">
+        <property name="text">
+         <string>金额</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QDoubleSpinBox" name="amountDoubleSpinBox">
+        <property name="prefix">
+         <string>￥</string>
+        </property>
+        <property name="minimum">
+         <double>0.010000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="submitPushButton">
       <property name="text">
-       <string>C++大作业1 银行管理系统
-
-组员：沈俞霖 李南辰 裘羿乐
-仲飞宇 易凯
-
-指导老师：梁力</string>
-      </property>
-      <property name="textFormat">
-       <enum>Qt::PlainText</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <string>提交</string>
       </property>
      </widget>
     </item>
@@ -50,130 +128,29 @@
      <height>23</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu_user">
+   <widget class="QMenu" name="menu">
     <property name="title">
-     <string>账户</string>
+     <string>账号</string>
     </property>
-    <addaction name="UserLoginOrLogout"/>
-    <addaction name="UserRegister"/>
-    <addaction name="separator"/>
-    <addaction name="UserChangePassword"/>
-    <addaction name="UserApply"/>
-    <addaction name="UserReapply"/>
-    <addaction name="separator"/>
-    <addaction name="UserViewStatus"/>
+    <addaction name="newAccountAction"/>
+    <addaction name="deleteAccountAction"/>
    </widget>
-   <widget class="QMenu" name="menu_card">
-    <property name="title">
-     <string>银行卡</string>
-    </property>
-    <addaction name="CardInit"/>
-    <addaction name="separator"/>
-    <addaction name="CardSave"/>
-    <addaction name="CardWithdraw"/>
-    <addaction name="CardTransfer"/>
-    <addaction name="CardChangePassword"/>
-    <addaction name="separator"/>
-    <addaction name="CardActivateOrFreeze"/>
-    <addaction name="separator"/>
-    <addaction name="CardQuery"/>
-   </widget>
-   <addaction name="menu_user"/>
-   <addaction name="menu_card"/>
+   <addaction name="menu"/>
   </widget>
-  <action name="UserLoginOrLogout">
+  <action name="newAccountAction">
    <property name="text">
-    <string>登录/注销</string>
+    <string>创建</string>
    </property>
-   <property name="toolTip">
-    <string>登录/注销</string>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
-  <action name="UserRegister">
+  <action name="deleteAccountAction">
    <property name="text">
-    <string>注册</string>
+    <string>删除</string>
    </property>
-  </action>
-  <action name="UserApply">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>申请新卡</string>
-   </property>
-  </action>
-  <action name="UserReapply">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>补办</string>
-   </property>
-  </action>
-  <action name="UserViewStatus">
-   <property name="text">
-    <string>查看状态</string>
-   </property>
-  </action>
-  <action name="CardSave">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>存款</string>
-   </property>
-  </action>
-  <action name="CardWithdraw">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>取款</string>
-   </property>
-  </action>
-  <action name="CardTransfer">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>转帐</string>
-   </property>
-  </action>
-  <action name="CardChangePassword">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>修改密码</string>
-   </property>
-  </action>
-  <action name="CardInit">
-   <property name="text">
-    <string>选择银行卡</string>
-   </property>
-  </action>
-  <action name="CardActivateOrFreeze">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>激活/冻结</string>
-   </property>
-  </action>
-  <action name="CardQuery">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>查询余额</string>
-   </property>
-  </action>
-  <action name="UserChangePassword">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>修改密码</string>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
  </widget>
