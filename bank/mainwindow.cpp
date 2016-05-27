@@ -4,6 +4,7 @@
 #include "deleteaccount.h"
 #include "bank.h"
 #include "cardlist.h"
+#include "trades.h"
 
 #include <QMessageBox>
 #include <QRegExpValidator>
@@ -15,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     b = new Bank(QString("bank.db"));
-    QRegExp re(QString("^[0-9X]+$"));
+    QRegExp re(QString("^[0-9]+$"));
     ui->cardIDLineEdit->setValidator(new QRegExpValidator(re,this));
     QRegExp re2(QString("^([0-9]){6}$"));
     ui->passwordLineEdit->setValidator(new QRegExpValidator(re2,this));
@@ -80,5 +81,17 @@ void MainWindow::on_accountListAction_triggered()
 
 void MainWindow::on_queryAction_triggered()
 {
+    Trades t;
+    t.b = b;
+    t.exec();
+}
 
+void MainWindow::on_operationComboBox_currentIndexChanged(int index)
+{
+    if(index==2){
+        ui->amountDoubleSpinBox->setEnabled(false);
+    }
+    else{
+        ui->amountDoubleSpinBox->setEnabled(true);
+    }
 }

@@ -7,7 +7,7 @@ DeleteAccount::DeleteAccount(QWidget *parent) :
     ui(new Ui::DeleteAccount)
 {
     ui->setupUi(this);
-    QRegExp re(QString("^[0-9X]+$"));
+    QRegExp re(QString("^[0-9]+$"));
     ui->accountLineEdit->setValidator(new QRegExpValidator(re,this));
 }
 

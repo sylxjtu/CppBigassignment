@@ -21,7 +21,7 @@ int Bank::withdraw(const QString &ID, double Amount){
         throw(err);
     }
     sql = QString("INSERT INTO trades (ID, money, endmoney) VALUES (")+ID+
-            ","+QString::number(cur,'f',2)+
+            ","+QString::number(-Amount,'f',2)+
             ","+QString::number(cur-Amount,'f',2)+
             ")";
     ba = sql.toLatin1();

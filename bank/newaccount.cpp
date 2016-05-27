@@ -7,7 +7,7 @@ NewAccount::NewAccount(QWidget *parent) :
     ui(new Ui::NewAccount)
 {
     ui->setupUi(this);
-    QRegExp re(QString("^[0-9X]+$"));
+    QRegExp re(QString("^[0-9]+$"));
     ui->accountLineEdit->setValidator(new QRegExpValidator(re,this));
     QRegExp re2(QString("^([0-9]){6}$"));
     ui->passwordLineEdit->setValidator(new QRegExpValidator(re2,this));
