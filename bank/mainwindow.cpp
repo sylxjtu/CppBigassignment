@@ -3,6 +3,7 @@
 #include "newaccount.h"
 #include "deleteaccount.h"
 #include "bank.h"
+#include "cardlist.h"
 
 #include <QMessageBox>
 #include <QRegExpValidator>
@@ -69,4 +70,15 @@ void MainWindow::on_submitPushButton_clicked()
         }
     }
     message.exec();
+}
+
+void MainWindow::on_accountListAction_triggered()
+{
+    CardList c(this,b);
+    c.exec();
+}
+
+void MainWindow::on_queryAction_triggered()
+{
+
 }

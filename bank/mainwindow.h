@@ -25,6 +25,8 @@ private slots:
 
     void on_queryAction_triggered();
 
+    void on_accountListAction_triggered();
+
 private:
     Ui::MainWindow *ui;
     Bank *b;
