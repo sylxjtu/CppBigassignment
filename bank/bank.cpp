@@ -66,12 +66,10 @@ int Bank::deleteAccount(const QString &ID){
 
     sql = "DELETE FROM accounts WHERE ID=" + ID;
     ba = sql.toLatin1();
-    if(sqlite3_exec(interface, ba.data(), InitCallback, 0, &err) != SQLITE_OK){
-        std::cerr << err;
-        throw(err);
-    }
-    else
-        return 0;
+    sqlite3_exec(interface, ba.data(), InitCallback, 0, &err);
+    sql = "DELETE FROM trades WHERE ID=" + ID;
+    sqlite3_exec(interface, sql.toLatin1().data(), InitCallback, 0, &err);
+    return 0;
 }
 
 int Bank::validate(const QString &ID, const QString &password){
