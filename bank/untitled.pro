@@ -17,14 +17,27 @@ SOURCES += main.cpp\
         bank.cpp\
         sqlite3.c \
     newaccount.cpp \
-    deleteaccount.cpp
+    deleteaccount.cpp \
+    bank_save.cpp \
+    bank_withdraw.cpp \
+    bank_query.cpp \
+    fileexists.cpp \
+    bank_databaseinit.cpp \
+    bank_findaccount.cpp \
+    cardlist.cpp \
+    trades.cpp
 
 HEADERS  += mainwindow.h\
             sqlite3.h \
     newaccount.h \
     bank.h \
-    deleteaccount.h
+    deleteaccount.h \
+    fileexists.h \
+    cardlist.h \
+    trades.h
 
 FORMS    += mainwindow.ui \
     newaccount.ui \
-    deleteaccount.ui
+    deleteaccount.ui \
+    cardlist.ui \
+    trades.ui

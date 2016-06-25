@@ -1,13 +1,14 @@
 #ifndef BANK_H
 #define BANK_H
-#include "sqlite3.h"
 
-bool fileExists(const char *fileName);
+#include "sqlite3.h"
+#include <QtCore>
+
 class Bank{
-    sqlite3* interface;
     QString dbname;
     void databaseInit();
 public:
+    sqlite3* interface;
     Bank(const QString& name);
     ~Bank();
     int findAccount(const QString& ID);
