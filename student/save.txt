@@ -1,0 +1,1 @@
+$id:100002 name:test2 {test_course 2 63} {test_course4 3 70} {test_course3 1 90} {test_courses3 1 85}; $id:100001 name:test2 {test_course 2 61} {test_coures3 1 60}; $id:100000 name:test1 {test_course 2 59} {test_course2 0.75 61};

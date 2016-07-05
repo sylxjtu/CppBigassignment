@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTableWidget" name="table">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="textElideMode">
+       <enum>Qt::ElideLeft</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="rowCount">
+       <number>0</number>
+      </property>
+      <property name="columnCount">
+       <number>3</number>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1080</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="Start">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>79</y>
+      <width>121</width>
+      <height>179</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>开始</string>
+    </property>
+    <addaction name="Open"/>
+    <addaction name="Save"/>
+    <addaction name="separator"/>
+    <addaction name="Import"/>
+    <addaction name="Upload"/>
+    <addaction name="separator"/>
+    <addaction name="Exit"/>
+   </widget>
+   <widget class="QMenu" name="Calculate">
+    <property name="geometry">
+     <rect>
+      <x>486</x>
+      <y>104</y>
+      <width>121</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>统计</string>
+    </property>
+    <widget class="QMenu" name="Sort">
+     <property name="title">
+      <string>排序</string>
+     </property>
+     <widget class="QMenu" name="menu_GPA">
+      <property name="title">
+       <string>按GPA</string>
+      </property>
+      <addaction name="KeyGPAA"/>
+      <addaction name="KeyGPAD"/>
+     </widget>
+     <addaction name="menu_GPA"/>
+     <addaction name="KeyOthers"/>
+    </widget>
+    <addaction name="Sort"/>
+    <addaction name="Charts"/>
+   </widget>
+   <widget class="QMenu" name="Edit">
+    <property name="geometry">
+     <rect>
+      <x>448</x>
+      <y>104</y>
+      <width>121</width>
+      <height>125</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>编辑</string>
+    </property>
+    <widget class="QMenu" name="menu">
+     <property name="title">
+      <string>删除</string>
+     </property>
+     <addaction name="RemoveCourse"/>
+     <addaction name="RemoveStudent"/>
+    </widget>
+    <addaction name="Add"/>
+    <addaction name="Update"/>
+    <addaction name="menu"/>
+   </widget>
+   <addaction name="Start"/>
+   <addaction name="Edit"/>
+   <addaction name="Calculate"/>
+  </widget>
+  <action name="Import">
+   <property name="text">
+    <string>导入</string>
+   </property>
+  </action>
+  <action name="Upload">
+   <property name="text">
+    <string>导出</string>
+   </property>
+  </action>
+  <action name="Exit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="Charts">
+   <property name="text">
+    <string>图表</string>
+   </property>
+  </action>
+  <action name="Open">
+   <property name="text">
+    <string>打开</string>
+   </property>
+  </action>
+  <action name="Add">
+   <property name="text">
+    <string>添加</string>
+   </property>
+  </action>
+  <action name="Update">
+   <property name="text">
+    <string>修改</string>
+   </property>
+  </action>
+  <action name="Save">
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </action>
+  <action name="KeyOthers">
+   <property name="text">
+    <string>其他</string>
+   </property>
+  </action>
+  <action name="RemoveCourse">
+   <property name="text">
+    <string>课程</string>
+   </property>
+  </action>
+  <action name="RemoveStudent">
+   <property name="text">
+    <string>学生</string>
+   </property>
+  </action>
+  <action name="KeyGPAA">
+   <property name="text">
+    <string>升序</string>
+   </property>
+  </action>
+  <action name="KeyGPAD">
+   <property name="text">
+    <string>降序</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
