@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>新建</string>
+    </property>
+    <widget class="QMenu" name="menu_2">
+     <property name="title">
+      <string>移动台</string>
+     </property>
+     <addaction name="newPhone"/>
+     <addaction name="newPDA"/>
+     <addaction name="newPC"/>
+    </widget>
+    <addaction name="newBase"/>
+    <addaction name="menu_2"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <action name="newBase">
+   <property name="text">
+    <string>基站</string>
+   </property>
+  </action>
+  <action name="newPhone">
+   <property name="text">
+    <string>手机</string>
+   </property>
+  </action>
+  <action name="newPDA">
+   <property name="text">
+    <string>PDA</string>
+   </property>
+  </action>
+  <action name="newPC">
+   <property name="text">
+    <string>笔记本电脑</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
